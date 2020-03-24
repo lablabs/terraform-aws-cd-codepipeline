@@ -68,7 +68,7 @@ resource "aws_codebuild_project" "default" {
     }
 
     environment_variable {
-      name  = "STACK_NAME"
+      name  = "NAME"
       value = var.codebuild_var_stack_name
     }
 
