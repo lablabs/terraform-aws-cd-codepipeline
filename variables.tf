@@ -23,6 +23,8 @@ variable "codebuild_var_stack_name" {}
 variable "codebuild_var_chart_name" {}
 variable "codebuild_var_ssm_path_access_key" {}
 variable "codebuild_var_ssm_path_secret_key" {}
+variable "codebuild_var_ssm_path_basicauth_user" {}
+variable "codebuild_var_ssm_path_basicauth_pass" {}
 
 # vpc
 variable "codebuild_vpc_id" {}

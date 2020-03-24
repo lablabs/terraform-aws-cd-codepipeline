@@ -88,6 +88,19 @@ resource "aws_codebuild_project" "default" {
       value = var.codebuild_var_ssm_path_secret_key
       type  = "PARAMETER_STORE"
     }
+
+    environment_variable {
+      name  = "BASICAUTH_USER"
+      value = var.codebuild_var_ssm_path_basicauth_user
+      type  = "PARAMETER_STORE"
+    }
+
+    environment_variable {
+      name  = "BASICAUTH_PASS"
+      value = var.codebuild_var_ssm_path_basicauth_pass
+      type  = "PARAMETER_STORE"
+    }
+
   }
 
   vpc_config {
@@ -296,7 +309,9 @@ data "aws_iam_policy_document" "pipeline" {
 
     resources = [
       "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter${var.codebuild_var_ssm_path_access_key}",
-      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter${var.codebuild_var_ssm_path_secret_key}"
+      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter${var.codebuild_var_ssm_path_secret_key}",
+      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter${var.codebuild_var_ssm_path_basicauth_user}",
+      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter${var.codebuild_var_ssm_path_basicauth_pass}"
     ]
 
     effect = "Allow"
