@@ -145,6 +145,24 @@ resource "aws_codepipeline" "default" {
   }
 
   stage {
+    name = "SoapUI"
+
+    action {
+      name            = "SoapUI"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["SourceArtifact"]
+
+      configuration = {
+        ProjectName = var.name
+        EnvironmentVariables = "[{\"name\":\"SOAPUI_RUN\",\"value\":\"true\",\"type\":\"PLAINTEXT\"}]"
+      }
+    }
+  }
+
+  stage {
     name = "Diff"
 
     action {
