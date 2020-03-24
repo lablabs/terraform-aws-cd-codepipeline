@@ -16,6 +16,7 @@ variable "tags" {
 variable "ssm_kms_key_arn" {}
 
 # build variables
+variable "codebuild_image" {}
 variable "codebuild_var_eks_cluster_id" {}
 variable "codebuild_var_environment" {}
 variable "codebuild_var_k8s_namespace" {}
