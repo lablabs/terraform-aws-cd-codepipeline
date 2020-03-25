@@ -42,7 +42,7 @@ resource "aws_codebuild_project" "default" {
   }
 
   environment {
-    compute_type                = "BUILD_GENERAL1_SMALL"
+    compute_type                = var.codebuild_compute_type
     image                       = "${var.codebuild_image_url}:${var.codebuild_image_tag}"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "SERVICE_ROLE"

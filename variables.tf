@@ -16,6 +16,9 @@ variable "tags" {
 variable "ssm_kms_key_arn" {}
 
 # build variables
+variable "codebuild_compute_type" {
+  default = "BUILD_GENERAL1_SMALL"
+}
 variable "codebuild_image_url" {}
 variable "codebuild_image_tag" {
   default = "latest"
