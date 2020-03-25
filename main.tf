@@ -43,7 +43,7 @@ resource "aws_codebuild_project" "default" {
 
   environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
-    image                       = var.codebuild_image
+    image                       = "${var.codebuild_image_url}:${var.codebuild_image_tag}"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "SERVICE_ROLE"
 
@@ -116,7 +116,7 @@ resource "aws_codebuild_project" "default" {
   }
 
   tags = var.tags
-  
+
   depends_on = [
     aws_iam_policy.pipeline,
     aws_iam_role.pipeline,
@@ -169,7 +169,7 @@ resource "aws_codepipeline" "default" {
       input_artifacts = ["SourceArtifact"]
 
       configuration = {
-        ProjectName = var.name
+        ProjectName          = var.name
         EnvironmentVariables = "[{\"name\":\"SOAPUI_RUN\",\"value\":\"true\",\"type\":\"PLAINTEXT\"}]"
       }
     }
@@ -351,7 +351,7 @@ data "aws_iam_policy_document" "pipeline" {
   }
 
   statement {
-    sid = "ECR"
+    sid = "ECRGetToken"
 
     actions = [
       "ecr:GetAuthorizationToken"
@@ -359,6 +359,35 @@ data "aws_iam_policy_document" "pipeline" {
 
     resources = [
       "*",
+    ]
+
+    effect = "Allow"
+  }
+
+  statement {
+    sid = "ECRGetToken"
+
+    actions = [
+      "ecr:GetAuthorizationToken"
+    ]
+
+    resources = [
+      "*",
+    ]
+
+    effect = "Allow"
+  }
+
+  statement {
+    sid = "ECRPullImage"
+
+    actions = [
+      "ecr:GetAuthorizationToken",
+      "ecr:GetDownloadUrlForLayer"
+    ]
+
+    resources = [
+      var.codebuild_image_repository_arn
     ]
 
     effect = "Allow"
