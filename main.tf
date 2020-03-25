@@ -365,20 +365,6 @@ data "aws_iam_policy_document" "pipeline" {
   }
 
   statement {
-    sid = "ECRGetToken"
-
-    actions = [
-      "ecr:GetAuthorizationToken"
-    ]
-
-    resources = [
-      "*",
-    ]
-
-    effect = "Allow"
-  }
-
-  statement {
     sid = "ECRPullImage"
 
     actions = [
