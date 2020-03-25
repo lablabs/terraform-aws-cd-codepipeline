@@ -368,8 +368,7 @@ data "aws_iam_policy_document" "pipeline" {
     sid = "ECRPullImage"
 
     actions = [
-      "ecr:GetAuthorizationToken",
-      "ecr:GetDownloadUrlForLayer"
+      "ecr:*"
     ]
 
     resources = [
