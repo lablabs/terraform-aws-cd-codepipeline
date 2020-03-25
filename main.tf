@@ -349,6 +349,20 @@ data "aws_iam_policy_document" "pipeline" {
 
     effect = "Allow"
   }
+
+  statement {
+    sid = "ECR"
+
+    actions = [
+      "ecr:GetAuthorizationToken"
+    ]
+
+    resources = [
+      "*",
+    ]
+
+    effect = "Allow"
+  }
 }
 
 resource "aws_iam_policy" "pipeline" {
