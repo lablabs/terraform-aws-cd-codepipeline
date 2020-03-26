@@ -43,3 +43,8 @@ variable "codebuild_security_group_ids" {}
 variable "codecommit_charts_repo_name" {}
 variable "codecommit_scripts_repo_name" {}
 variable "codecommit_main_repo_name" {}
+
+# codepipeline
+variable "codepipeline_soapui_run" {
+  default = false
+}

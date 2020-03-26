@@ -170,7 +170,7 @@ resource "aws_codepipeline" "default" {
 
       configuration = {
         ProjectName          = var.name
-        EnvironmentVariables = "[{\"name\":\"SOAPUI_RUN\",\"value\":\"true\",\"type\":\"PLAINTEXT\"}]"
+        EnvironmentVariables = "[{\"name\":\"SOAPUI_RUN\",\"value\":\"${var.codepipeline_soapui_run}\",\"type\":\"PLAINTEXT\"}]"
       }
     }
   }
