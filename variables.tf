@@ -16,6 +16,7 @@ variable "tags" {
 variable "ssm_kms_key_arn" {}
 
 # build variables
+
 variable "codebuild_compute_type" {
   default = "BUILD_GENERAL1_SMALL"
 }
@@ -35,16 +36,19 @@ variable "codebuild_var_ssm_path_basicauth_user" {}
 variable "codebuild_var_ssm_path_basicauth_pass" {}
 
 # vpc
+
 variable "codebuild_vpc_id" {}
 variable "codebuild_subnets" {}
 variable "codebuild_security_group_ids" {}
 
 # codecommit
+
 variable "codecommit_charts_repo_name" {}
 variable "codecommit_scripts_repo_name" {}
 variable "codecommit_main_repo_name" {}
 
 # codepipeline
+
 variable "codepipeline_soapui_run" {
   default = false
 }
