@@ -328,7 +328,7 @@ data "aws_iam_policy_document" "pipeline" {
     ]
 
     resources = [
-      "${aws_s3_bucket.codepipeline_bucket.arn}",
+      aws_s3_bucket.codepipeline_bucket.arn,
       "${aws_s3_bucket.codepipeline_bucket.arn}/*"
     ]
 
