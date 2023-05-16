@@ -1,0 +1,9 @@
+### Terraform ###
+# Local .terraform directories
+**/.terraform/*
+.terraform.lock.hcl
+
+.env
+
+# JetBrains
+.idea

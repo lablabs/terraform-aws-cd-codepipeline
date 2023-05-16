@@ -293,9 +293,7 @@ data "aws_iam_policy_document" "pipeline" {
       "kms:DescribeKey"
     ]
 
-    resources = [
-      var.ssm_kms_key_arn
-    ]
+    resources = ["*"]
 
     effect = "Allow"
   }
