@@ -88,6 +88,5 @@ variable "codecommit_main_repo_name" {
 # codepipeline
 
 variable "codepipeline_soapui_run" {
-  type    = bool
   default = false
 }
