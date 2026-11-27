@@ -17,11 +17,11 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7.0.1
 
       - name: Extract Terraform min/max versions
         id: minMax
-        uses: clowdhaus/terraform-min-max@main
+        uses: clowdhaus/terraform-min-max@v3.0.1
         with:
           directory: .
     outputs:
@@ -38,8 +38,8 @@ jobs:
           - ${{ needs.versionExtract.outputs.maxVersion }}
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: hashicorp/setup-terraform@v2
+    - uses: actions/checkout@v7.0.1
+    - uses: hashicorp/setup-terraform@v4.0.1
       with:
         terraform_version: ${{ matrix.tf_ver }}
 
