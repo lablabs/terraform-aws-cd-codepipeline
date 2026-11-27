@@ -192,15 +192,19 @@ resource "aws_codepipeline" "default" {
     }
   }
 
-  stage {
-    name = "Approval"
+  dynamic "stage" {
+    for_each = var.codepipeline_approval_enabled ? [1] : []
 
-    action {
-      name     = "Approval"
-      category = "Approval"
-      owner    = "AWS"
-      provider = "Manual"
-      version  = "1"
+    content {
+      name = "Approval"
+
+      action {
+        name     = "Approval"
+        category = "Approval"
+        owner    = "AWS"
+        provider = "Manual"
+        version  = "1"
+      }
     }
   }
 

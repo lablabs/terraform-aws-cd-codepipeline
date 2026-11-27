@@ -88,5 +88,12 @@ variable "codecommit_main_repo_name" {
 # codepipeline
 
 variable "codepipeline_soapui_run" {
+  type    = any
   default = false
+}
+
+variable "codepipeline_approval_enabled" {
+  type        = bool
+  default     = true
+  description = "Add the manual Approval stage before Deploy; false skips it (e.g. dev)."
 }

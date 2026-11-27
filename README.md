@@ -13,11 +13,11 @@ We help companies build, run, deploy and scale software and infrastructure by em
 
 A terraform module to create AWS CodeBuild and CodePipeline resources.
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
 
@@ -28,7 +28,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_codebuild_project.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codebuild_project) | resource |
 | [aws_codepipeline.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codepipeline) | resource |
 | [aws_iam_policy.pipeline](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
@@ -46,7 +46,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_codebuild_image_repository_arn"></a> [codebuild\_image\_repository\_arn](#input\_codebuild\_image\_repository\_arn) | n/a | `string` | n/a | yes |
 | <a name="input_codebuild_image_url"></a> [codebuild\_image\_url](#input\_codebuild\_image\_url) | n/a | `string` | n/a | yes |
 | <a name="input_codebuild_security_group_ids"></a> [codebuild\_security\_group\_ids](#input\_codebuild\_security\_group\_ids) | n/a | `list(string)` | n/a | yes |
@@ -69,15 +69,16 @@ No modules.
 | <a name="input_codebuild_compute_type"></a> [codebuild\_compute\_type](#input\_codebuild\_compute\_type) | n/a | `string` | `"BUILD_GENERAL1_SMALL"` | no |
 | <a name="input_codebuild_image_tag"></a> [codebuild\_image\_tag](#input\_codebuild\_image\_tag) | n/a | `string` | `"latest"` | no |
 | <a name="input_codebuild_source_version"></a> [codebuild\_source\_version](#input\_codebuild\_source\_version) | n/a | `string` | `"refs/heads/master"` | no |
-| <a name="input_codepipeline_soapui_run"></a> [codepipeline\_soapui\_run](#input\_codepipeline\_soapui\_run) | n/a | `bool` | `false` | no |
+| <a name="input_codepipeline_approval_enabled"></a> [codepipeline\_approval\_enabled](#input\_codepipeline\_approval\_enabled) | Add the manual Approval stage before Deploy; false skips it (e.g. dev). | `bool` | `true` | no |
+| <a name="input_codepipeline_soapui_run"></a> [codepipeline\_soapui\_run](#input\_codepipeline\_soapui\_run) | n/a | `any` | `false` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | n/a | `map(string)` | `{}` | no |
 
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_pipeline_iam_role_arn"></a> [pipeline\_iam\_role\_arn](#output\_pipeline\_iam\_role\_arn) | n/a |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
 
 ## Contributing and reporting issues
 
